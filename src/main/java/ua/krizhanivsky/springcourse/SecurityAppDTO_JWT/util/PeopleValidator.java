@@ -11,6 +11,7 @@ import ua.krizhanivsky.springcourse.SecurityAppDTO_JWT.services.PeopleService;
 @Component
 public class PeopleValidator implements Validator {
     private final PeopleService peopleService;
+
     @Autowired
     public PeopleValidator(PeopleService peopleService) {
         this.peopleService = peopleService;
@@ -26,6 +27,6 @@ public class PeopleValidator implements Validator {
 
         Person person = (Person) o;
         if (peopleService.getPersonByUsername(person.getUsername()).isPresent())
-            errors.rejectValue("username", "","A person with this name already exists");
+            errors.rejectValue("username", "", "A person with this name already exists");
     }
 }

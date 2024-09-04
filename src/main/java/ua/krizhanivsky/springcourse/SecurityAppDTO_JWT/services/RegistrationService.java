@@ -8,7 +8,6 @@ import ua.krizhanivsky.springcourse.SecurityAppDTO_JWT.models.Person;
 import ua.krizhanivsky.springcourse.SecurityAppDTO_JWT.repositories.PeopleRepository;
 
 
-
 @Service
 public class RegistrationService {
 

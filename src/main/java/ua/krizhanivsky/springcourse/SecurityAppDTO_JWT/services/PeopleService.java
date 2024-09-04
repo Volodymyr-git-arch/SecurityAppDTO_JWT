@@ -12,12 +12,14 @@ import java.util.Optional;
 @Service
 public class PeopleService {
     private final PeopleRepository peopleRepository;
-     @Autowired
+
+    @Autowired
     public PeopleService(PeopleRepository peopleRepository) {
         this.peopleRepository = peopleRepository;
     }
+
     @Transactional
-    public Optional<Person> getPersonByUsername (String username){
+    public Optional<Person> getPersonByUsername(String username) {
         return peopleRepository.findByUsername(username);
     }
 }

@@ -40,19 +40,20 @@ public class AuthController {
 
 
     @PostMapping("/registration")
-    public Map<String,String> performRegistration(@RequestBody @Valid PersonDTO personDTO,
-                                      BindingResult bindingResult) {
+    public Map<String, String> performRegistration(@RequestBody @Valid PersonDTO personDTO,
+                                                   BindingResult bindingResult) {
         Person person = convertToPerson(personDTO);
-       peopleValidator.validate(person, bindingResult);
+        peopleValidator.validate(person, bindingResult);
 
         if (bindingResult.hasErrors())
-            return Map.of("message","Error");
+            return Map.of("message", "Error");
 
         registrationService.register(person);
 
         String token = jwtUtil.generateToken(person.getUsername());
-        return Map.of("jwt-token",token);
+        return Map.of("jwt-token", token);
     }
+
     @PostMapping("/login")
     public Map<String, String> performLogin(@RequestBody AuthenticationDTO authenticationDTO) {
         UsernamePasswordAuthenticationToken authInputToken =
@@ -68,7 +69,8 @@ public class AuthController {
         String token = jwtUtil.generateToken(authenticationDTO.getUsername());
         return Map.of("jwt-token", token);
     }
-    public Person convertToPerson(PersonDTO personDTO){
+
+    public Person convertToPerson(PersonDTO personDTO) {
 
         return this.modelMapper.map(personDTO, Person.class);
     }

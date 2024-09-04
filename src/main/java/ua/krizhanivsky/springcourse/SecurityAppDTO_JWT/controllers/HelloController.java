@@ -14,7 +14,8 @@ import ua.krizhanivsky.springcourse.SecurityAppDTO_JWT.services.AdminService;
 @RestController
 public class HelloController {
     private final AdminService adminService;
-      @Autowired
+
+    @Autowired
     public HelloController(AdminService adminService) {
         this.adminService = adminService;
     }
@@ -25,8 +26,9 @@ public class HelloController {
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         return personDetails.getUsername();
     }
+
     @GetMapping("/admin")
-    public String adminPage(){
+    public String adminPage() {
         adminService.doAdminStuff();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();

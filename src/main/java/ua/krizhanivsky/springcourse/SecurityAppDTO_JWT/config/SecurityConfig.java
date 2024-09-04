@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import ua.krizhanivsky.springcourse.SecurityAppDTO_JWT.services.PersonDetailsService;
 
 
-
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -32,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-            http.csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/auth/login", "/auth/registration", "/error").permitAll()
@@ -52,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(personDetailsService)
@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

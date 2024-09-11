@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class AuthenticationDTO {
     @NotEmpty(message = "Name must not be empty")
-    @Size(min = 2, max = 100, message = "Name must be between 2 and 30 characters long")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters long")
     private String username;
 
     private String password;

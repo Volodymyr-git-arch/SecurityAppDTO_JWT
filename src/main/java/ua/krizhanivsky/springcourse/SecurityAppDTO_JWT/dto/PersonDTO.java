@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class PersonDTO {
     @NotEmpty(message = "Name must not be empty")
-    @Size(min = 2, max = 100, message = "Name must be between 2 and 30 characters long")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters long")
     private String username;
 
     @Min(value = 1900, message = "Year of birth must be greater than 1900")
